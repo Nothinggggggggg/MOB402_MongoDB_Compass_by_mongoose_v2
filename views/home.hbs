@@ -1,0 +1,31 @@
+<div class="container">
+
+
+    {{!-- Button --}}
+    <div class="row my-4  p-4 my-5 ">
+        {{!-- Go to Add --}}
+        <div class="col-auto">
+            <a class="btn btn-dark" href="/employees/create"><i class="fa-solid fa-user-plus"></i> Add new Employee</a>
+        </div>
+        {{!-- Find --}}
+        <div class="col-auto ms-auto">
+            <form action="/employees/list_search" method="post">
+                <div class=" input-group">
+                    <span class="input-group-text">Input your search</span>
+                    <input name="name" type="text" aria-label="Name" class="form-control" placeholder="Name">
+                    <input name="age" type="number" aria-label="Age" class="form-control" placeholder="Age" min="0">
+                    <input name="salary" type="number" aria-label="Salary" class="form-control" placeholder="Salary" min="0">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{!-- Table --}}
+    {{> table}}
+
+
+    {{!-- Footer --}}
+    {{> pagination}}
+
+</div>

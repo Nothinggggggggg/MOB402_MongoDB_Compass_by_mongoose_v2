@@ -1,0 +1,66 @@
+<div class="row">
+    <table class="table table-striped table-borderless table-hover  table-response shadow">
+        {{!-- Head --}}
+        <thead>
+            <tr>
+                <th>#</th>
+
+                <th>View</th>
+
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        {{!-- Body --}}
+
+        <tbody>
+            {{#each employeesPage}}
+            <tr>
+                <th class="align-middle">{{increase @index}}</th>
+
+                <td class="align-middle"><a class="btn" href="/employees/detail/{{this._id}}"><i
+                            class="fa-regular fa-eye"></i></a></td>
+
+                <td class="align-middle">{{shortText this.name 20}}</td>
+                <td class="align-middle">{{this.age}}</td>
+                <td class="align-middle">{{this.salary}}</td>
+
+                <td class="align-middle"><a class="btn" href="/employees/update/{{this._id}}"><i
+                            class="fa-regular fa-pen-to-square"></i></a></td>
+                <td class="align-middle"><button class="btn" type="button" class="btn btn-primary"
+                        data-bs-toggle="modal" data-bs-target="#modal_{{this._id}}"><i
+                            class="fa-regular fa-trash-can"></i></button> </td>
+            </tr>
+            <!-- The Modal -->
+            <div class="modal" id="modal_{{this._id}}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Delete Employee</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            {{this.name}}
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer col-auto">
+                            <a type="button" class="btn btn-danger" href="/employees/delete/{{this._id}}">Yes</a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </tbody>
+
+    </table>
+
+
+</div>
